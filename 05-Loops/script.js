@@ -49,20 +49,22 @@ var todoList = {
     this.displayTodos();
   },
   toggleAll: function() {
-    const completedTodos = [];
-    for (let i = 0; i < this.todos.length; i++) {
+    let totalTodos = this.todos.length;
+    let completedTodos = 0;
+
+    for (let i = 0; i < totalTodos; i++) {
       if (this.todos[i].completed === true) {
-        completedTodos.push(this.todos[i]);
+        completedTodos++;
       }
     }
 
-    if (completedTodos.length === this.todos.length) {
-      for (let i = 0; i < this.todos.length; i++) {
+    if (completedTodos === totalTodos) {
+      for (let i = 0; i < totalTodos; i++) {
         this.todos[i].completed = false;
       }
       this.displayTodos();
     } else {
-      for (let i = 0; i < this.todos.length; i++) {
+      for (let i = 0; i < totalTodos; i++) {
         this.todos[i].completed = true;
       }
       this.displayTodos();
