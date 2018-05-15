@@ -47,5 +47,25 @@ var todoList = {
     let todo = this.todos[position];
     todo.completed = !todo.completed;
     this.displayTodos();
-  }
+  },
+  toggleAll: function() {
+    const completedTodos = [];
+    for (let i = 0; i < this.todos.length; i++) {
+      if (this.todos[i].completed === true) {
+        completedTodos.push(this.todos[i]);
+      }
+    }
+
+    if (completedTodos.length === this.todos.length) {
+      for (let i = 0; i < this.todos.length; i++) {
+        this.todos[i].completed = false;
+      }
+      this.displayTodos();
+    } else {
+      for (let i = 0; i < this.todos.length; i++) {
+        this.todos[i].completed = true;
+      }
+      this.displayTodos();
+    }
+  },
 }
