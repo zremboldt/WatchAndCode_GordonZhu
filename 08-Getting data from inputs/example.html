@@ -1,0 +1,19 @@
+<html>
+  <body>
+
+
+    <button onclick="handlers.displayTodos()">Display Todos</button>
+    <button onclick="handlers.toggleAll()">Toggle All</button>
+
+    <script>
+      // There's more JS above this contained within a todoList object.
+      // todoList contains the methods displayTodos() and toggleAll().
+      var handlers = {
+        displayTodos: () => todoList.displayTodos(),
+        toggleAll: () => todoList.toggleAll()
+      };
+    </script>
+
+
+  </body>
+</html>
