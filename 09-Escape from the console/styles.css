@@ -13,8 +13,14 @@ p, input, button, li {
   font-size: 16px;
 }
 
+ul {
+  padding: 0;
+  list-style: none;
+  margin: 24px;
+}
+
 li {
-  padding: 10px;
+  padding: 10px 0;
 }
 
 div {
