@@ -1,4 +1,5 @@
 
+// Model
 var todoList = {
   todos: [
     {
@@ -53,6 +54,37 @@ var todoList = {
 
 
 
+// View
+var view = {
+  displayTodos: () => {
+    const todosUl = document.getElementById('todosUl');
+    todosUl.innerHTML = '';
+
+    if (todoList.todos.length === 0) {
+      const MsgNoTodos = document.createElement('p');
+      MsgNoTodos.textContent = 'Your todo list is empty!';
+      todosUl.appendChild(MsgNoTodos);
+    } else {
+      todoList.todos.forEach(todo => {
+        const todoLi = document.createElement('li');
+        let todoTextWithCompletion = '';
+
+        if (todo.completed === true) {
+          todoTextWithCompletion = `(X) ${todo.todoText}`;
+        } else {
+          todoTextWithCompletion = `( ) ${todo.todoText}`;
+        }
+
+        todoLi.textContent = todoTextWithCompletion;
+        todosUl.appendChild(todoLi);
+      });
+    }
+  }
+}
+
+
+
+// Controller
 var handlers = {
   addTodo: () => {
     const addTodoInput = document.getElementById('addTodoInput');
@@ -85,35 +117,6 @@ var handlers = {
     view.displayTodos();
   },
 };
-
-
-
-var view = {
-  displayTodos: () => {
-    const todosUl = document.getElementById('todosUl');
-    todosUl.innerHTML = '';
-
-    if (todoList.todos.length === 0) {
-      const MsgNoTodos = document.createElement('p');
-      MsgNoTodos.textContent = 'Your todo list is empty!';
-      todosUl.appendChild(MsgNoTodos);
-    } else {
-      todoList.todos.forEach(todo => {
-        const todoLi = document.createElement('li');
-        let todoTextWithCompletion = '';
-
-        if (todo.completed === true) {
-          todoTextWithCompletion = `(X) ${todo.todoText}`;
-        } else {
-          todoTextWithCompletion = `( ) ${todo.todoText}`;
-        }
-
-        todoLi.textContent = todoTextWithCompletion;
-        todosUl.appendChild(todoLi);
-      });
-    }
-  }
-}
 
 
 
