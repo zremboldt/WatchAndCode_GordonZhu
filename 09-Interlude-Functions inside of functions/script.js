@@ -1,4 +1,13 @@
 
+// HIGHER ORDER FUNCTION
+// A function that accepts another function as an arguement.
+// A function that enhances the behavior of another function.
+
+// CALLBACK FUNCTION
+// A function that is passed into a higher order function.
+
+
+
 // Functions can be passed into other functions
 setTimeout(function() {
   console.log('Wake up!');
