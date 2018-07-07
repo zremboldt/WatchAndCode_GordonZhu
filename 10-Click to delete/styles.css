@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  color: #ae8fe8;
+  font-family: "Fira Code";
+  margin: 0;
+  padding: 20px;
+  height: 100vh;
+  background-color: #2c2734; }
+
+p, input, button, li {
+  font-size: 16px;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+  margin: 24px;
+}
+
+li {
+  padding: 10px 0;
+}
+
+div {
+  margin: 24px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 3px;
+  border: none;
+  background-color: #ae8fe8;
+  color: #2c2734;
+}
+
+input {
+  padding: 10px;
+  border-radius: 3px;
+  border: none;
+}

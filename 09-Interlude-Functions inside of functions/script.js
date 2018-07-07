@@ -1,6 +1,6 @@
 
 // HIGHER ORDER FUNCTION
-// A function that accepts another function as an arguement.
+// A function that accepts another function as an argument.
 // A function that enhances the behavior of another function.
 
 // CALLBACK FUNCTION
