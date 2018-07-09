@@ -56,7 +56,7 @@ var todoList = {
 
 // View
 var view = {
-  displayTodos: () => {
+  displayTodos: function() {
     const todosUl = document.getElementById('todosUl');
     todosUl.innerHTML = '';
 
@@ -65,7 +65,7 @@ var view = {
       MsgNoTodos.textContent = 'Your todo list is empty!';
       todosUl.appendChild(MsgNoTodos);
     } else {
-      todoList.todos.forEach(todo => {
+      todoList.todos.forEach((todo, i) => {
         const todoLi = document.createElement('li');
         let todoTextWithCompletion = '';
 
@@ -75,19 +75,30 @@ var view = {
           todoTextWithCompletion = `( ) ${todo.todoText}`;
         }
 
+        todoLi.id = i;
         todoLi.textContent = todoTextWithCompletion;
+        todoLi.appendChild(this.createDeleteBtn());
         todosUl.appendChild(todoLi);
       });
     }
   },
-  createDeleteBtn: () => {
+  createDeleteBtn: function() {
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     deleteBtn.className = 'deleteBtn';
     return deleteBtn;
+  },
+  setUpEventListeners: function() {
+    const todosUl = document.getElementById('todosUl');
+    todosUl.addEventListener('click', (e) => {
+      elementClicked = e.target;
+
+      if (elementClicked.className === 'deleteBtn') {
+        handlers.deleteTodo(parseInt(e.target.parentNode.id));
+      }
+    });
   }
 }
-
 
 
 
@@ -102,20 +113,18 @@ var handlers = {
   changeTodo: () => {
     const changeTodoInputPosition = document.getElementById('changeTodoInputPosition');
     const changeTodoInput = document.getElementById('changeTodoInput');
-    todoList.changeTodo(changeTodoInputPosition.valueAsNumber - 1, changeTodoInput.value);
+    todoList.changeTodo(changeTodoInputPosition.valueAsNumber, changeTodoInput.value);
     changeTodoInputPosition.value = '';
     changeTodoInput.value = '';
     view.displayTodos();
   },
-  deleteTodo: () => {
-    const deleteTodoInputPosition = document.getElementById('deleteTodoInputPosition');
-    todoList.deleteTodo(deleteTodoInputPosition.valueAsNumber - 1);
-    deleteTodoInputPosition.value = '';
+  deleteTodo: (position) => {
+    todoList.deleteTodo(position);
     view.displayTodos();
   },
   toggleCompleted: () => {
     const toggleCompletedInputPosition = document.getElementById('toggleCompletedInputPosition');
-    todoList.toggleCompleted(toggleCompletedInputPosition.valueAsNumber - 1);
+    todoList.toggleCompleted(toggleCompletedInputPosition.valueAsNumber);
     toggleCompletedInputPosition.value = '';
     view.displayTodos();
   },
@@ -128,9 +137,4 @@ var handlers = {
 
 
 view.displayTodos();
-
-
-
-
-
-
+view.setUpEventListeners();
